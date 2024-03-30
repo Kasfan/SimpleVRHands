@@ -14,20 +14,20 @@ namespace SimpleVRHand
         bool HandVisible { get; }
         
         /// <summary>
-        /// Target hand global position
+        /// Position offset of the hand model in local space
         /// </summary>
-        Vector3 HandPosition { get; }
+        Vector3 HandPositionOffset { get; }
 
         /// <summary>
-        /// Target hand global rotation
+        /// Rotation offset of the hand model in local space
         /// </summary>
-        Quaternion HandRotation { get; }
+        Quaternion HandRotationOffset { get; }
 
         /// <summary>
         /// Returns target finger state
         /// </summary>
-        /// <param name="fingerName"></param>
-        /// <returns></returns>
-        VrFingerState GetFingerState(HandFinger fingerName);
+        /// <param name="fingerName">name of the finger</param>
+        /// <returns>fount finger state or null</returns>
+        VrFingerState? GetFingerState(HandFinger fingerName);
     }
 }

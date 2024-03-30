@@ -14,14 +14,14 @@ namespace SimpleVRHand
         bool Visible { get; set; }
 
         /// <summary>
-        /// Global position of a hand in the scene
+        /// Position offset of the hand model in local space
         /// </summary>
-        Vector3 Position { get; set; }
+        Vector3 PositionOffset { get; set; }
         
         /// <summary>
-        /// Global rotation of a hand in the space
+        /// Rotation offset of the hand model in local space
         /// </summary>
-        Quaternion Rotation { get; set; }
+        Quaternion RotationOffset { get; set; }
         
         /// <summary>
         /// Fingers attached to the hand

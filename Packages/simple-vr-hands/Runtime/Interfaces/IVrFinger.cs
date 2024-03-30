@@ -9,7 +9,7 @@
         Index = 1,
         Middle = 2,
         Ring = 3,
-        Pinkie = 4
+        Pinky = 4
     }
     
     /// <summary>
@@ -31,7 +31,10 @@
         HandFinger Finger { get; }
         
         /// <summary>
-        /// Tilt of a finger in degrees. (left and right rotation)
+        /// Tilt of a finger in range -1 to 1
+        /// <br/>   -1 max left tilt
+        /// <br/>   0 rest position
+        /// <br/>   1 max right tilt
         /// </summary>
         float Tilt { get; set; }
         
@@ -39,5 +42,11 @@
         /// Root joint of a finger.
         /// </summary>
         IVrFingerJoint Root { get; }
+
+        /// <summary>
+        /// Update the finger state
+        /// </summary>
+        /// <param name="state">target finger state</param>
+        void UpdateState(VrFingerState state);
     }
 }
