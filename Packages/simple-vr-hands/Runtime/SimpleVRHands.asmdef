@@ -2,7 +2,8 @@
     "name": "SimpleVRHands",
     "rootNamespace": "",
     "references": [
-        "GUID:fe685ec1767f73d42b749ea8045bfe43"
+        "GUID:fe685ec1767f73d42b749ea8045bfe43",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
