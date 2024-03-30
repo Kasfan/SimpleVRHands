@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
@@ -266,12 +264,16 @@ namespace SimpleVRHand.Tests
         private class MockHandProfile: IVrHandProfile
         {
             public Dictionary<HandFinger, VrFingerState> FingerStates = new();
+            public bool OverrideVisibility { get; set; }
             public bool HandVisible { get; set; }
+            public bool OverridePosition { get; set; }
             public Vector3 HandPositionOffset { get; set; }
+            public bool OverrideRotation { get; set; }
             public Quaternion HandRotationOffset { get; set; }
-            public VrFingerState? GetFingerState(HandFinger fingerName)
+            public VrFingerState? GetFingerState(HandFinger fingerName, bool onlyActive = false)
             {
-                if (!FingerStates.ContainsKey(fingerName))
+                if (!FingerStates.ContainsKey(fingerName) 
+                    || (onlyActive && FingerStates[fingerName].Muted))
                     return null;
 
                 return FingerStates[fingerName];
@@ -291,9 +293,6 @@ namespace SimpleVRHand.Tests
             public IReadOnlyCollection<IVrFinger> Fingers => MockFingers;
             public IVrFinger GetFinger(HandFinger fingerName)
             {
-                if (!Enum.IsDefined(typeof(HandFinger), fingerName))
-                    throw new InvalidEnumArgumentException(nameof(fingerName), (int)fingerName, typeof(HandFinger));
-                
                 return Fingers.First(finger => finger.Finger == fingerName);
             }
         }

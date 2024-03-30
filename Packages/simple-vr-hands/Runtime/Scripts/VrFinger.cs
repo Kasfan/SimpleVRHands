@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SimpleVRHand.Helpers;
+using UnityEngine;
 
 namespace SimpleVRHand
 {
@@ -11,22 +12,30 @@ namespace SimpleVRHand
         [Tooltip("Name of the finger. In a hand all fingers names must be unique.")]
         [field:SerializeField]
         public HandFinger Finger { get; protected set; }
+        
+        [Tooltip("An axis in which the finger tilts")] 
+        [AxisSelector]
+        [SerializeField]
+        protected Vector3Int tiltAxis = Vector3Int.up;
 
         [Tooltip("Rotation of a finger when it fully tilted left.")]
         [SerializeField]
-        protected Vector3 maxLeftTilt;
+        protected float maxLeftTilt;
         
         [Tooltip("Rotation of a finger when it fully tilted right.")]
         [SerializeField]
-        protected Vector3 maxRightTilt;
+        protected float maxRightTilt;
         
         [Tooltip("Rotation of a finger when it's in rest position.")]
         [SerializeField]
-        protected Vector3 restTilt;
-        
+        protected float restTilt;
+
+        [Tooltip("Root joint of the finger")] 
+        [SerializeField]
+        protected VrFingerJoint rootJoint;
+
         /// <inheritdoc />
-        [field:SerializeField]
-        public IVrFingerJoint Root { get; set; }
+        public IVrFingerJoint Root => rootJoint;
         
         private float tilt;
         
@@ -42,9 +51,33 @@ namespace SimpleVRHand
             get => tilt;
             set
             {
-                tilt = value;
-                transform.localRotation = GetRotationFromTilt(tilt, restTilt, maxLeftTilt, maxRightTilt);
+                tilt = Mathf.Clamp(0f,1f, value);
+                var tiltRotation = Mathf.Lerp(
+                    restTilt,
+                    tilt<0? maxLeftTilt : maxRightTilt,
+                    Mathf.Abs(tilt));
+                transform.localRotation = VrFingerJoint.UpdateOneRotationAxis(transform.localRotation, tiltRotation, tiltAxis);
             }
+        }
+        
+        /// <summary>
+        /// When the component is added to a gameObject, try to guess basic parameters of the finger
+        /// </summary>
+        protected void Reset()
+        {
+            if (tiltAxis == Vector3Int.right)
+                restTilt = transform.localRotation.eulerAngles.x;
+            
+            if (tiltAxis == Vector3Int.up)
+                restTilt = transform.localRotation.eulerAngles.y;
+            
+            if (tiltAxis == Vector3Int.forward)
+                restTilt = transform.localRotation.eulerAngles.z;
+
+            // usually a finger tilts bends small range
+            // we use 5 degrees by default
+            maxLeftTilt = restTilt + 5; 
+            maxRightTilt = restTilt - 5; 
         }
         
         /// <inheritdoc />
@@ -64,24 +97,6 @@ namespace SimpleVRHand
                 finger.Bend = state.Bends[c];
                 c++;
             }
-        }
-
-        /// <summary>
-        /// Transforms tilt value to the finger rotation based on preset constrains
-        /// </summary>
-        /// <param name="tilt">value of the tilt</param>
-        /// <param name="rest">rest position: 0</param>
-        /// <param name="left">max left tilt rotation: -1</param>
-        /// <param name="right">max right tilt rotation: 1</param>
-        /// <returns>finger rotation for the tilt</returns>
-        public static Quaternion GetRotationFromTilt(float tilt, Vector3 rest, Vector3 left, Vector3 right)
-        {
-            Vector3 targetRotation = Vector3.Lerp(
-                rest,
-                tilt<0? left : right,
-                Mathf.Abs(tilt));
-
-            return Quaternion.Euler(targetRotation);
         }
     }
 }

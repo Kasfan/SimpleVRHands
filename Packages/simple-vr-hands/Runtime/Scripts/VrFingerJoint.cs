@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using SimpleVRHand.Helpers;
 using UnityEngine;
 
 namespace SimpleVRHand
@@ -12,13 +14,19 @@ namespace SimpleVRHand
         [Tooltip("Optional. Next joint in the finger connected to the current one")]
         [SerializeField] 
         private VrFingerJoint followingJoint;
-
-        [Tooltip("Rotation of the joint, when it's fully bent")] [SerializeField]
-        protected Vector3 fullBend = new Vector3(90, 0, 0);
         
-        [Tooltip("Rotation of the joint, when it's not bent at all")]
+        [Tooltip("An axis in which the joint bends")] 
+        [AxisSelector]
         [SerializeField]
-        protected Vector3 restBend = Vector3.zero;
+        protected Vector3Int bendAxis = Vector3Int.right;
+
+        [Tooltip("Rotation angle of the joint, when it's fully bent")]
+        [SerializeField]
+        protected float fullBendAngle = 65f;
+        
+        [Tooltip("Rotation angle of the joint, when it's not bent at all")]
+        [SerializeField]
+        protected float restBendAngle = 0f;
 
         private float bend;
         
@@ -31,10 +39,42 @@ namespace SimpleVRHand
             get => bend;
             set
             {
-                bend = value;
-                var targetRotation = Vector3.Lerp(restBend, fullBend, bend);
-                transform.localRotation = Quaternion.Euler(targetRotation);
+                bend = Mathf.Clamp(0f,1f, value);
+                var bendRotation = Mathf.LerpAngle(restBendAngle, fullBendAngle, bend);
+                transform.localRotation = UpdateOneRotationAxis(transform.localRotation, bendRotation, bendAxis);
             }
+        }
+
+        /// <summary>
+        /// Updates rotation euler angles in only one axis
+        /// </summary>
+        /// <param name="originalRotation">original rotation</param>
+        /// <param name="newAngle">new euler angle in degrees for the axis</param>
+        /// <param name="axis">axis to apply rotation in</param>
+        /// <returns>updated rotation</returns>
+        public static Quaternion UpdateOneRotationAxis(Quaternion originalRotation, float newAngle, Vector3Int axis)
+        {
+            var newRotation = originalRotation.eulerAngles;
+            if (axis == Vector3Int.right)
+            {
+                newRotation.x = newAngle;
+                return Quaternion.Euler(newRotation);
+            }
+            
+            if (axis == Vector3Int.up)
+            {
+                newRotation.y = newAngle;
+                return Quaternion.Euler(newRotation);
+            }
+            
+            if (axis == Vector3Int.forward)
+            {
+                newRotation.z = newAngle;
+                return Quaternion.Euler(newRotation);
+            }
+            
+            Debug.LogError($"Target [axis] value can be only: {Vector3Int.right}, {Vector3Int.up} or {Vector3Int.forward}");
+            return originalRotation;
         }
 
         /// <summary>
@@ -57,7 +97,27 @@ namespace SimpleVRHand
                 }
             }
         }
-                
+
+        /// <summary>
+        /// When the component is added to a gameObject, try to guess basic parameters of the joint
+        /// </summary>
+        protected void Reset()
+        {
+            if (bendAxis == Vector3Int.right)
+                restBendAngle = transform.localRotation.eulerAngles.x;
+            
+            if (bendAxis == Vector3Int.up)
+                restBendAngle = transform.localRotation.eulerAngles.y;
+            
+            if (bendAxis == Vector3Int.forward)
+                restBendAngle = transform.localRotation.eulerAngles.z;
+
+            // usually a finger joint bends up to 90 degrees forward
+            // to be safe we use 80, because some hand will look crooked at full bend
+            // the user, can change in anyway
+            fullBendAngle = restBendAngle + 80; 
+        }
+
         public IEnumerator GetEnumerator()
         {
             return new JointEnumerator(this);

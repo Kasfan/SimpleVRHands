@@ -64,12 +64,12 @@ namespace SimpleVRHand
         protected VrFingerState GetFingerState(HandFinger finger)
         {
             VrFingerState? fingerStateCandidate = CurrentProvider.CurrentProfile.GetFingerState(finger);
-            if (fingerStateCandidate is { Active: false })
+            if (fingerStateCandidate is { Muted: false })
                 return fingerStateCandidate.Value;
             
             // if no active finger state found, look in he default state provider
             fingerStateCandidate = defaultStateProvider.CurrentProfile.GetFingerState(finger);
-            if (fingerStateCandidate is { Active: false })
+            if (fingerStateCandidate is { Muted: false })
                 return fingerStateCandidate.Value;
             
             // if no active finger state found in the default provider, throw an exception

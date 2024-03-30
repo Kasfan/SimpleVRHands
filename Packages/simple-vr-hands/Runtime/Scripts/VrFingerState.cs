@@ -12,9 +12,9 @@ namespace SimpleVRHand
         /// <summary>
         /// Whether the state should be applied to the finger or not
         /// </summary>
-        [Tooltip("If disabled, the state values will not affect related finger")]
-        [field:SerializeField]
-        public bool Active { get; set; }
+        [Tooltip("If muted, the state values will not affect related finger")]
+        [field: SerializeField]
+        public bool Muted { get; set; }
         
         /// <summary>
         /// Tilt of the finger
