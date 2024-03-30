@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4717471063698162836, guid: a766a240dfd5fb94e8aa22c0bdbd8923, type: 3}
+      propertyPath: defaultHandStateProvider.actionsProfileMap.m_keys.Array.data[0]
+      value: 
+      objectReference: {fileID: -3742484312079769484, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 6192070166106655411, guid: a766a240dfd5fb94e8aa22c0bdbd8923, type: 3}
       propertyPath: m_IsActive
       value: 1

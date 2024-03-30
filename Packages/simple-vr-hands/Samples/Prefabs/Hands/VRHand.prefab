@@ -77,17 +77,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec893aa3fd44841b231ac06a268b686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directInteractor: {fileID: 0}
-  handStateProvider:
-    actionsProfileMap:
-      m_keys: []
-      m_values: []
   fingers:
   - {fileID: 5060495390771222558}
   - {fileID: 2647506242188088071}
   - {fileID: 4324601288054630046}
   - {fileID: 1565957704155889907}
   - {fileID: 7858100549263330895}
+  defaultHandStateProvider:
+    freeMovementProfile: {fileID: 11400000, guid: b03ffe205d19da9499fa5a24a1546f46, type: 2}
+    actionsProfileMap:
+      m_keys:
+      - {fileID: 15759602096507913, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+      m_values:
+      - {fileID: 11400000, guid: da71c3a3814166e49b2474ec7f84c5b8, type: 2}
+  handControllerInteractors: []
 --- !u!1001 &5537453127641753947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,6 +99,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6303842740198553733}
     m_Modifications:
+    - target: {fileID: -8963421420082658848, guid: 88b6a0101883cf74689480effb81144d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.07698268
+      objectReference: {fileID: 0}
+    - target: {fileID: -8963421420082658848, guid: 88b6a0101883cf74689480effb81144d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.0411778
+      objectReference: {fileID: 0}
     - target: {fileID: -8712924870032863444, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -178,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_Name
-      value: RightHand
+      value: HandModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -187,9 +198,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3660296117453300194, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5060495390771222558}
-    - targetCorrespondingSourceObject: {fileID: 3660296117453300194, guid: 88b6a0101883cf74689480effb81144d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2212678208046390077}
     - targetCorrespondingSourceObject: {fileID: -1090203833553747078, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 146204412114984365}
@@ -199,9 +207,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3572946652406112826, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1565957704155889907}
-    - targetCorrespondingSourceObject: {fileID: -3572946652406112826, guid: 88b6a0101883cf74689480effb81144d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8717136600817887766}
     - targetCorrespondingSourceObject: {fileID: 1993411076054597985, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6749030375797167863}
@@ -211,9 +216,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2736516156910950188, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2647506242188088071}
-    - targetCorrespondingSourceObject: {fileID: -2736516156910950188, guid: 88b6a0101883cf74689480effb81144d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3327948036758406535}
     - targetCorrespondingSourceObject: {fileID: -4537796052862462867, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3269917839603736692}
@@ -223,9 +225,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -7879881099197629671, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4324601288054630046}
-    - targetCorrespondingSourceObject: {fileID: -7879881099197629671, guid: 88b6a0101883cf74689480effb81144d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4974274307977116789}
     - targetCorrespondingSourceObject: {fileID: 3560630464649066306, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1374568133017318309}
@@ -235,9 +234,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7733844488332697777, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7858100549263330895}
-    - targetCorrespondingSourceObject: {fileID: 7733844488332697777, guid: 88b6a0101883cf74689480effb81144d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2577247729883985413}
     - targetCorrespondingSourceObject: {fileID: -4122984567820800142, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5727528192647294429}
@@ -262,28 +258,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbb926faf014697bfadc50a2a2f9bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Finger>k__BackingField: 4
-  tiltAxis: {x: 0, y: 1, z: 0}
-  maxLeftTilt: 10.140093
-  maxRightTilt: 0.14009285
-  restTilt: 5.140093
-  rootJoint: {fileID: 8717136600817887766}
---- !u!114 &8717136600817887766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194406526811632797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e66761d2639846de8771f119f61caace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   followingJoint: {fileID: 6749030375797167863}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 432.27435
-  restBendAngle: 352.27435
+  bendAngle: 65
+  originRotation: {x: -0.06267674, y: 0.051014844, z: 0.09903724, w: 0.99179673}
+  <Finger>k__BackingField: 4
+  tiltAxis: {x: 0, y: 1, z: 0}
+  leftTilt: -5
+  rightTilt: 5
 --- !u!1 &725302906859406889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4122984567820800142, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -303,8 +285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 5968141331668142718}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 116.01486
-  restBendAngle: 36.01486
+  bendAngle: 65
+  originRotation: {x: 0.30390567, y: 0.06966191, z: -0.09680318, w: 0.9452078}
 --- !u!1 &999375598411382070 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4537796052862462867, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -324,8 +306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 2110809168690244178}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 103.575096
-  restBendAngle: 23.575096
+  bendAngle: 65
+  originRotation: {x: 0.20427474, y: 0.0019674818, z: -0.0123084, w: 0.9788343}
 --- !u!1 &1647487651110109583 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2736516156910950188, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -343,28 +325,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbb926faf014697bfadc50a2a2f9bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Finger>k__BackingField: 2
-  tiltAxis: {x: 0, y: 1, z: 0}
-  maxLeftTilt: 6.191985
-  maxRightTilt: -3.808015
-  restTilt: 1.1919849
-  rootJoint: {fileID: 3327948036758406535}
---- !u!114 &3327948036758406535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647487651110109583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e66761d2639846de8771f119f61caace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   followingJoint: {fileID: 3269917839603736692}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 101.87552
-  restBendAngle: 21.875517
+  bendAngle: 65
+  originRotation: {x: 0.18964538, y: 0.011715397, z: -0.009750124, w: 0.9817344}
+  <Finger>k__BackingField: 2
+  tiltAxis: {x: 0, y: 1, z: 0}
+  leftTilt: -5
+  rightTilt: 5
 --- !u!1 &1685673707722710052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2613131178710829697, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -384,8 +352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 0}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 90.48966
-  restBendAngle: 10.489661
+  bendAngle: 65
+  originRotation: {x: 0.09172485, y: -0.029571526, z: -0.008965976, w: 0.9953048}
 --- !u!1 &1958823378971692004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2884591588453850433, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -405,8 +373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 0}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 439.70343
-  restBendAngle: 359.70343
+  bendAngle: 65
+  originRotation: {x: -0.0030179783, y: 0.026077718, z: -0.016432201, w: 0.9995203}
 --- !u!1 &2579462993148856714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8004281557694095569, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -426,8 +394,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 0}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 93.38699
-  restBendAngle: 13.386995
+  bendAngle: 65
+  originRotation: {x: 0.1129837, y: -0.050618958, z: 0.07914509, w: 0.98914534}
 --- !u!1 &2849897656843012586 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7733844488332697777, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -445,28 +413,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbb926faf014697bfadc50a2a2f9bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Finger>k__BackingField: 0
-  tiltAxis: {x: 0, y: 1, z: 0}
-  maxLeftTilt: 280.5
-  maxRightTilt: 325
-  restTilt: 305.3083
-  rootJoint: {fileID: 2577247729883985413}
---- !u!114 &2577247729883985413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2849897656843012586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e66761d2639846de8771f119f61caace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   followingJoint: {fileID: 5727528192647294429}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 99.444
-  restBendAngle: 19.443996
+  bendAngle: 65
+  originRotation: {x: 0.12707697, y: 0.45972317, z: -0.55127263, w: -0.684547}
+  <Finger>k__BackingField: 0
+  tiltAxis: {x: 0, y: 1, z: 0}
+  leftTilt: -5
+  rightTilt: 5
 --- !u!1 &3066068465259182614 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1849816981038263475, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -486,8 +440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 0}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 93.21017
-  restBendAngle: 13.210169
+  bendAngle: 65
+  originRotation: {x: 0.11511069, y: -0.048731122, z: 0.0011094841, w: 0.992156}
 --- !u!1 &4325194126140434977 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1090203833553747078, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -507,8 +461,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 6209944349260619056}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 95.033134
-  restBendAngle: 15.0331335
+  bendAngle: 65
+  originRotation: {x: 0.13075915, y: 0.0037599166, z: -0.02628858, w: 0.99105847}
 --- !u!4 &5427476618891955888 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -533,8 +487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 6669861395190502599}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 122.34271
-  restBendAngle: 42.34271
+  bendAngle: 65
+  originRotation: {x: 0.36025816, y: 0.025496999, z: -0.06776039, w: 0.930039}
 --- !u!1 &6808868297106575938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7879881099197629671, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -552,28 +506,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbb926faf014697bfadc50a2a2f9bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Finger>k__BackingField: 3
-  tiltAxis: {x: 0, y: 1, z: 0}
-  maxLeftTilt: 14.448096
-  maxRightTilt: 4.4480963
-  restTilt: 9.448096
-  rootJoint: {fileID: 4974274307977116789}
---- !u!114 &4974274307977116789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6808868297106575938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e66761d2639846de8771f119f61caace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   followingJoint: {fileID: 1374568133017318309}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 89.82811
-  restBendAngle: 9.828114
+  bendAngle: 65
+  originRotation: {x: 0.08123156, y: 0.08615339, z: -0.055879932, w: 0.9913912}
+  <Finger>k__BackingField: 3
+  tiltAxis: {x: 0, y: 1, z: 0}
+  leftTilt: -5
+  rightTilt: 5
 --- !u!1 &7276394867179822433 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6331481824332811206, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -593,8 +533,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 0}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 436.3176
-  restBendAngle: 356.3176
+  bendAngle: 65
+  originRotation: {x: -0.03223448, y: 0.0019387039, z: -0.040452998, w: 0.9986595}
 --- !u!1 &9057049793601281561 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3560630464649066306, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -614,8 +554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 3241733751407182357}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 115.04816
-  restBendAngle: 35.04816
+  bendAngle: 65
+  originRotation: {x: 0.3017412, y: -0.0072937733, z: -0.039555237, w: 0.95254105}
 --- !u!1 &9084613304709400761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3660296117453300194, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -633,25 +573,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bbb926faf014697bfadc50a2a2f9bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Finger>k__BackingField: 1
-  tiltAxis: {x: 0, y: 1, z: 0}
-  maxLeftTilt: 356.60168
-  maxRightTilt: 346.60168
-  restTilt: 351.60168
-  rootJoint: {fileID: 2212678208046390077}
---- !u!114 &2212678208046390077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9084613304709400761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e66761d2639846de8771f119f61caace, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   followingJoint: {fileID: 146204412114984365}
   bendAxis: {x: 1, y: 0, z: 0}
-  fullBendAngle: 97.782616
-  restBendAngle: 17.782614
+  bendAngle: 65
+  originRotation: {x: 0.151882, y: -0.07698268, z: 0.0411778, w: 0.9845354}
+  <Finger>k__BackingField: 1
+  tiltAxis: {x: 0, y: 1, z: 0}
+  leftTilt: -5
+  rightTilt: 5

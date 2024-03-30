@@ -11,20 +11,20 @@ namespace SimpleVRHand
         [Tooltip("A map of the fingers and their states for current profile.")]
         [field: SerializeField] 
         private SerializableDictionary<HandFinger, VrFingerState> fingerStates;
-        
+
         /// <inheritdoc />
         [Tooltip("If visibility state should be applied")]
-        [field:SerializeField]
+        [field: SerializeField]
         public bool OverrideVisibility { get; set; }
 
         /// <inheritdoc />
         [Tooltip("Whether or not the hand model should be visible.")]
-        [field:SerializeField]
-        public bool HandVisible { get; protected set; }
-        
+        [field: SerializeField]
+        public bool HandVisible { get; protected set; } = true;
+
         /// <inheritdoc />
         [Tooltip("If position offset should be applied")]
-        [field:SerializeField]
+        [field: SerializeField]
         public bool OverridePosition { get; set; }
 
         /// <inheritdoc />

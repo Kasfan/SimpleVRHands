@@ -6,7 +6,7 @@ namespace SimpleVRHand
     /// <summary>
     /// Finger attached to <see cref="VrHand"/>
     /// </summary>
-    public class VrFinger: MonoBehaviour, IVrFinger
+    public class VrFinger: VrFingerJoint, IVrFinger
     {
         /// <inheritdoc />
         [Tooltip("Name of the finger. In a hand all fingers names must be unique.")]
@@ -18,80 +18,55 @@ namespace SimpleVRHand
         [SerializeField]
         protected Vector3Int tiltAxis = Vector3Int.up;
 
-        [Tooltip("Rotation of a finger when it fully tilted left.")]
+        [Tooltip("Rotation of a finger when it fully tilted left.")] 
         [SerializeField]
-        protected float maxLeftTilt;
+        protected float leftTilt = -5;
         
         [Tooltip("Rotation of a finger when it fully tilted right.")]
         [SerializeField]
-        protected float maxRightTilt;
-        
-        [Tooltip("Rotation of a finger when it's in rest position.")]
-        [SerializeField]
-        protected float restTilt;
-
-        [Tooltip("Root joint of the finger")] 
-        [SerializeField]
-        protected VrFingerJoint rootJoint;
+        protected float rightTilt = 5;
 
         /// <inheritdoc />
-        public IVrFingerJoint Root => rootJoint;
+        public IVrFingerJoint Root => this;
         
         private float tilt;
         
-        /// <summary>
         /// <inheritdoc />
-        /// <remarks>
-        /// If finger transform is the same as root joint transform,
-        /// updating Tilt will reset the bend of the joint.
-        /// In most cases it's better to use <see cref="UpdateState"/>.
-        /// </remarks>
-        /// </summary>
         public float Tilt {             
             get => tilt;
             set
             {
-                tilt = Mathf.Clamp(0f,1f, value);
-                var tiltRotation = Mathf.Lerp(
-                    restTilt,
-                    tilt<0? maxLeftTilt : maxRightTilt,
-                    Mathf.Abs(tilt));
-                transform.localRotation = VrFingerJoint.UpdateOneRotationAxis(transform.localRotation, tiltRotation, tiltAxis);
+                tilt = Mathf.Clamp(value,-1f,1f);
+                transform.localRotation = GetRotation();
             }
         }
-        
-        /// <summary>
-        /// When the component is added to a gameObject, try to guess basic parameters of the finger
-        /// </summary>
-        protected void Reset()
-        {
-            if (tiltAxis == Vector3Int.right)
-                restTilt = transform.localRotation.eulerAngles.x;
-            
-            if (tiltAxis == Vector3Int.up)
-                restTilt = transform.localRotation.eulerAngles.y;
-            
-            if (tiltAxis == Vector3Int.forward)
-                restTilt = transform.localRotation.eulerAngles.z;
-
-            // usually a finger tilts bends small range
-            // we use 5 degrees by default
-            maxLeftTilt = restTilt + 5; 
-            maxRightTilt = restTilt - 5; 
-        }
-        
+                
         /// <inheritdoc />
-        public void UpdateState(VrFingerState state)
+        protected override Quaternion GetRotation()
         {
-            // update tilt of the finger
-            Tilt = state.Tilt;
-            
+            var tAngle = Mathf.LerpAngle(
+                0,
+                tilt < 0 ? leftTilt : rightTilt,
+                Mathf.Abs(tilt));
+
+            var bAngle = Mathf.Lerp(0f, bendAngle, Bend);
+
+            return originRotation *
+                   Quaternion.AngleAxis(tAngle, tiltAxis) *
+                   Quaternion.AngleAxis(bAngle, bendAxis);
+        }
+
+        /// <inheritdoc />
+        public  void UpdateState(VrFingerState state)
+        {
+            tilt = Mathf.Clamp(state.Tilt,-1f,1f); // to avoid double rotation calculation
+
             // update all joints
             var c = 0;
             foreach (IVrFingerJoint finger in Root)
             {
                 // stop, if no more bends left
-                if(c > state.Bends.Length) 
+                if(c >= state.Bends.Length) 
                     break;
                 
                 finger.Bend = state.Bends[c];

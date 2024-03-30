@@ -16,6 +16,10 @@ namespace SimpleVRHand
     [Serializable]
     public class VrHandActionBasedStateProvider: IVrHandStateProvider
     {
+        [Tooltip("Based hand profile.")]
+        [SerializeField]
+        protected VrHandProfileSo freeMovementProfile;
+        
         [Tooltip("Set here an action and corresponding hand profile. Note that at runtime you can only change profiles, but not delete or add input actions.")]
         [SerializeField] 
         protected SerializableDictionary<InputActionReference, VrHandProfileSo> actionsProfileMap;
@@ -46,6 +50,15 @@ namespace SimpleVRHand
         /// </summary>
         protected virtual void UpdateProfile()
         {
+            // reset to the base profile
+            foreach (var finger in FingerNamesEnum)
+            {
+                var state = freeMovementProfile.GetFingerState(finger);
+                if (state is { Muted: false })
+                    currentProfile.FingerStates[finger] = state.Value;
+            }
+
+            // update the profile to merge actions profiles
             foreach (var (action, profile) in actionsProfileMap)
             {
                 if (!action.ToInputAction().triggered)
@@ -54,7 +67,7 @@ namespace SimpleVRHand
                 foreach (var finger in FingerNamesEnum)
                 {
                     var state = profile.GetFingerState(finger);
-                    if (state.HasValue)
+                    if (state is { Muted: false })
                         currentProfile.FingerStates[finger] = state.Value;
                 }
             }
@@ -83,11 +96,11 @@ namespace SimpleVRHand
             /// </summary>
             public Dictionary<HandFinger, VrFingerState> FingerStates { get; set; } = new()
             {
-                { HandFinger.Index , new VrFingerState()},
-                { HandFinger.Middle , new VrFingerState()},
-                { HandFinger.Pinky , new VrFingerState()},
-                { HandFinger.Ring , new VrFingerState()},
-                { HandFinger.Thumb , new VrFingerState()},
+                { HandFinger.Index ,  new VrFingerState { Bends = Array.Empty<float>() }},
+                { HandFinger.Middle , new VrFingerState { Bends = Array.Empty<float>() }},
+                { HandFinger.Pinky ,  new VrFingerState { Bends = Array.Empty<float>() }},
+                { HandFinger.Ring ,   new VrFingerState { Bends = Array.Empty<float>() }},
+                { HandFinger.Thumb ,  new VrFingerState { Bends = Array.Empty<float>() }},
             };
             
             /// <inheritdoc />

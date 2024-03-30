@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 namespace SimpleVRHand
@@ -19,13 +20,39 @@ namespace SimpleVRHand
         /// <summary>
         /// Tilt of the finger
         /// </summary>
-        [field:SerializeField]
-        public float Tilt { get; set; }
-        
+        public float Tilt 
+        {
+            get => tilt;
+            set => tilt = value;
+        }
+
+        [Tooltip("Tilt of the finger (lef to right)")] 
+        [Range(-1f, 1f)] 
+        [SerializeField]
+        public float tilt;
+
         /// <summary>
         /// A set of bends for the finger joints. First element - root joint, last element - tip of the finger
         /// </summary>
-        [field:SerializeField]
-        public float[] Bends { get; set; }
+        public float[] Bends
+        {
+            get => bends;
+            set => bends = value;
+        }
+
+        [Tooltip("A set of bends for the finger joints. First element - root joint, last element - tip of the finger")]
+        [Range(0,1)]
+        [SerializeField]
+        public float[] bends;
+
+        /// <summary>
+        /// Default state of a finger, useful to reset the finger rotations
+        /// </summary>
+        public static readonly VrFingerState DefaultState = new()
+        {
+            Muted = false,
+            Tilt = 0,
+            Bends = Enumerable.Repeat(0f, 10).ToArray()
+        };
     }
 }

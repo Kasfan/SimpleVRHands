@@ -1,13 +1,27 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace SimpleVRHand
 {
     public class VrHand: MonoBehaviour, IVrHand
     {
-        [Tooltip("Fingers attached to the hand. Must be children of the hand")]
+        [Tooltip("Fingers attached to the hand. Must be children of the hand.")]
         [SerializeField] 
         protected VrFinger[] fingers;
+
+        [Tooltip("HandStateProvider that is used when hand does not interact with anything.")]
+        [field:SerializeField]
+        protected VrHandActionBasedStateProvider defaultHandStateProvider;
+
+        [Tooltip("Controllers that are used to detect when hand interacts with objects.")]
+        [SerializeField] 
+        private XRBaseControllerInteractor[] handControllerInteractors;
+
+        /// <summary>
+        /// Active hand driver
+        /// </summary>
+        internal VrHandDriver HandDriver;
 
         /// <inheritdoc />
         public bool Visible { get; set; }
@@ -32,6 +46,18 @@ namespace SimpleVRHand
 
             return null;
         }
+
+        protected virtual void Awake()
+        {
+            defaultHandStateProvider.Initialize();
+            HandDriver = new VrHandDriver(defaultHandStateProvider);
+        }
+
+        protected void Update()
+        {
+            HandDriver.UpdateHand(this);
+        }
+
 
         protected virtual void OnValidate()
         {
