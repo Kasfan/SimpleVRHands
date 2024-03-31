@@ -20,11 +20,11 @@ namespace SimpleVRHand
 
         [Tooltip("Rotation of a finger when it fully tilted left.")] 
         [SerializeField]
-        protected float leftTilt = -5;
+        protected float leftTilt = -10;
         
         [Tooltip("Rotation of a finger when it fully tilted right.")]
         [SerializeField]
-        protected float rightTilt = 5;
+        protected float rightTilt = 10;
 
         /// <inheritdoc />
         public IVrFingerJoint Root => this;

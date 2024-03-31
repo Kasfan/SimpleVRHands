@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4355813804287330373}
   - component: {fileID: 4144092868745452290}
   - component: {fileID: 911927652222377919}
+  - component: {fileID: 1188635950730183573}
   m_Layer: 0
   m_Name: Drill
   m_TagString: Untagged
@@ -239,6 +240,20 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &1188635950730183573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4899704716601760287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88c0a416a544423b80e01c2a8c26134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectProfile: {fileID: 11400000, guid: 7da2e6162152bdc4bb565a764ba6d988, type: 2}
+  activateProfile: {fileID: 11400000, guid: ade734eadf0964d448a9bca264a12a9b, type: 2}
 --- !u!1 &6861157764444802865
 GameObject:
   m_ObjectHideFlags: 0

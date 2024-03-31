@@ -28,7 +28,7 @@ namespace SimpleVRHand
         [SerializeField]
         protected Quaternion originRotation;
 
-        protected float bend;
+        private float bend;
         
         /// <inheritdoc/>
         public IVrFingerJoint Next => followingJoint;
@@ -40,8 +40,7 @@ namespace SimpleVRHand
             set
             {
                 bend = Mathf.Clamp(value, 0f,1f);
-                var angle = Mathf.Lerp(0f, bendAngle, bend);
-                transform.localRotation = originRotation * Quaternion.AngleAxis(angle, bendAxis);
+                transform.localRotation = GetRotation();
             }
         }
         

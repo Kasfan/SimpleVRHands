@@ -28,7 +28,7 @@ namespace SimpleVRHand.Tests
             };
             var defaultProvider = new MockStateProvider() 
             {                 
-                Profile =  new MockHandProfile()
+                Profile =  new VrHandProfile()
                 {
                     FingerStates = new Dictionary<HandFinger, VrFingerState>()
                     {
@@ -61,7 +61,7 @@ namespace SimpleVRHand.Tests
             };
             var defaultProvider = new MockStateProvider() 
             {                 
-                Profile =  new MockHandProfile()
+                Profile =  new VrHandProfile()
                 {
                     FingerStates = new Dictionary<HandFinger, VrFingerState>()
                     {
@@ -98,10 +98,10 @@ namespace SimpleVRHand.Tests
                     new MockFinger() { Finger = HandFinger.Thumb },
                 }
             };
-            var defaultProvider = new MockStateProvider() { Profile =  new MockHandProfile() };
+            var defaultProvider = new MockStateProvider() { Profile =  new VrHandProfile() };
             var provider = new MockStateProvider()
             {
-                Profile =  new MockHandProfile()
+                Profile =  new VrHandProfile()
                 {
                     FingerStates = new Dictionary<HandFinger, VrFingerState>()
                     {
@@ -141,7 +141,7 @@ namespace SimpleVRHand.Tests
             };
             var defaultProvider = new MockStateProvider()
             {
-                Profile =  new MockHandProfile()
+                Profile =  new VrHandProfile()
                 {
                     FingerStates = new Dictionary<HandFinger, VrFingerState>()
                     {
@@ -153,7 +153,7 @@ namespace SimpleVRHand.Tests
                     }
                 }
             };
-            var provider = new MockStateProvider() { Profile =  new MockHandProfile() };
+            var provider = new MockStateProvider() { Profile =  new VrHandProfile() };
             var driver = new VrHandDriver(defaultProvider);
             
             driver.SetProvider(provider);
@@ -172,11 +172,11 @@ namespace SimpleVRHand.Tests
             var hand = new MockHand();
             var defaultProvider = new MockStateProvider()
             {
-                Profile =  new MockHandProfile() { HandRotationOffset = new Quaternion(0f, 0.2f, 0.6f, 1f) }
+                Profile =  new VrHandProfile() { HandRotationOffset = new Quaternion(0f, 0.2f, 0.6f, 1f) }
             };
             var provider = new MockStateProvider()
             {
-                Profile = new MockHandProfile() { HandRotationOffset = new Quaternion(0f, 0.5f, 0.1f, 0f) }
+                Profile = new VrHandProfile() { HandRotationOffset = new Quaternion(0f, 0.5f, 0.1f, 0f) }
             };
             var driver = new VrHandDriver(defaultProvider);
             
@@ -195,11 +195,11 @@ namespace SimpleVRHand.Tests
             var hand = new MockHand();
             var defaultProvider = new MockStateProvider()
             {
-                Profile =  new MockHandProfile() { HandPositionOffset = Vector3.one }
+                Profile =  new VrHandProfile() { HandPositionOffset = Vector3.one }
             };
             var provider = new MockStateProvider()
             {
-                Profile = new MockHandProfile() { HandPositionOffset = Vector3.forward }
+                Profile = new VrHandProfile() { HandPositionOffset = Vector3.forward }
             };
             var driver = new VrHandDriver(defaultProvider);
             
@@ -218,11 +218,11 @@ namespace SimpleVRHand.Tests
             var hand = new MockHand() { Visible = false };
             var defaultProvider = new MockStateProvider()
             {
-                Profile =  new MockHandProfile() { HandVisible = false }
+                Profile =  new VrHandProfile() { HandVisible = false }
             };
             var provider = new MockStateProvider()
             {
-                Profile = new MockHandProfile() { HandVisible = true }
+                Profile = new VrHandProfile() { HandVisible = true }
             };
             var driver = new VrHandDriver(defaultProvider);
             
@@ -255,30 +255,9 @@ namespace SimpleVRHand.Tests
         private class MockStateProvider: IVrHandStateProvider
         {
             public IVrHandProfile CurrentProfile => Profile;
-            public MockHandProfile Profile { get; set; }
+            public VrHandProfile Profile { get; set; }
         }
-        
-        /// <summary>
-        /// Mock for IVrHandStateProvider to use in this test
-        /// </summary>
-        private class MockHandProfile: IVrHandProfile
-        {
-            public Dictionary<HandFinger, VrFingerState> FingerStates = new();
-            public bool OverrideVisibility { get; set; }
-            public bool HandVisible { get; set; }
-            public bool OverridePosition { get; set; }
-            public Vector3 HandPositionOffset { get; set; }
-            public bool OverrideRotation { get; set; }
-            public Quaternion HandRotationOffset { get; set; }
-            public VrFingerState? GetFingerState(HandFinger fingerName, bool onlyActive = false)
-            {
-                if (!FingerStates.ContainsKey(fingerName) 
-                    || (onlyActive && FingerStates[fingerName].Muted))
-                    return null;
 
-                return FingerStates[fingerName];
-            }
-        }
         
         /// <summary>
         /// Mock for IVrHand to use in this test

@@ -61,7 +61,7 @@ namespace SimpleVRHand
             // update the profile to merge actions profiles
             foreach (var (action, profile) in actionsProfileMap)
             {
-                if (!action.ToInputAction().triggered)
+                if (!action.ToInputAction().inProgress)
                     continue;
                 
                 foreach (var finger in FingerNamesEnum)

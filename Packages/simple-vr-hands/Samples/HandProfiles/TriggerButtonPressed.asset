@@ -10,29 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29ae2d5188d42d98ff9615dfb0c4b68, type: 3}
-  m_Name: GripButtonPressed
+  m_Name: TriggerButtonPressed
   m_EditorClassIdentifier: 
   fingerStates:
-    m_keys: 040000000300000002000000
+    m_keys: 01000000
     m_values:
-    - <Muted>k__BackingField: 0
-      tilt: 1
-      bends:
-      - 1
-      - 1
-      - 1
-    - <Muted>k__BackingField: 0
-      tilt: 1
-      bends:
-      - 1
-      - 1
-      - 1
     - <Muted>k__BackingField: 0
       tilt: 0
       bends:
-      - 1
-      - 1
-      - 1
+      - 0.474
+      - 0.767
+      - 0.399
   <OverrideVisibility>k__BackingField: 0
   <HandVisible>k__BackingField: 1
   <OverridePosition>k__BackingField: 0

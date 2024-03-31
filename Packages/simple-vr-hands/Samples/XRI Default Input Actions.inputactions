@@ -403,6 +403,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Thumbstik Touched",
+                    "type": "Button",
+                    "id": "8d5250eb-cbe0-49b6-8bd0-9d8d49a827ee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -612,6 +621,28 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Aim Flags",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51da8f75-ef6b-4603-8eee-3fb03955a079",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxisTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thumbstik Touched",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51d39fbc-25d4-4468-b1bb-984a89bc8569",
+                    "path": "<XRController>{LeftHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thumbstik Touched",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1119,6 +1150,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Thumbstik Touched",
+                    "type": "Button",
+                    "id": "88716bcc-d3c9-4b12-9b94-ddc7e41e0bfa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1328,6 +1368,28 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Aim Flags",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abb2f4ca-5b10-480a-a5f3-0f6c111a981a",
+                    "path": "<XRController>{RightHand}/{Primary2DAxisTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thumbstik Touched",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0af356f1-0405-4ec5-8307-fdbd20511c23",
+                    "path": "<XRController>{RightHand}/{Primary2DAxisClick}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thumbstik Touched",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

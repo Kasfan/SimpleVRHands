@@ -88,8 +88,12 @@ MonoBehaviour:
     actionsProfileMap:
       m_keys:
       - {fileID: 15759602096507913, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+      - {fileID: 4390019208782727137, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+      - {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
       m_values:
       - {fileID: 11400000, guid: da71c3a3814166e49b2474ec7f84c5b8, type: 2}
+      - {fileID: 11400000, guid: 5f405d0383e49a24587f8b1592542a5d, type: 2}
+      - {fileID: 11400000, guid: d963ac120cafa914f8f4377b798d379f, type: 2}
   handControllerInteractors: []
 --- !u!1001 &5537453127641753947
 PrefabInstance:
@@ -121,19 +125,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8712924870032863444, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.684547
+      value: -0.6031816
       objectReference: {fileID: 0}
     - target: {fileID: -8712924870032863444, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.12707697
+      value: 0.21270362
       objectReference: {fileID: 0}
     - target: {fileID: -8712924870032863444, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.45972317
+      value: 0.5622472
       objectReference: {fileID: 0}
     - target: {fileID: -8712924870032863444, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.55127263
+      value: -0.5242206
       objectReference: {fileID: 0}
     - target: {fileID: -8712924870032863444, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -141,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8712924870032863444, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 305.3083
+      value: 287.1
       objectReference: {fileID: 0}
     - target: {fileID: -8712924870032863444, guid: 88b6a0101883cf74689480effb81144d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -264,8 +268,8 @@ MonoBehaviour:
   originRotation: {x: -0.06267674, y: 0.051014844, z: 0.09903724, w: 0.99179673}
   <Finger>k__BackingField: 4
   tiltAxis: {x: 0, y: 1, z: 0}
-  leftTilt: -5
-  rightTilt: 5
+  leftTilt: -10
+  rightTilt: 10
 --- !u!1 &725302906859406889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4122984567820800142, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -285,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 5968141331668142718}
   bendAxis: {x: 1, y: 0, z: 0}
-  bendAngle: 65
+  bendAngle: 10
   originRotation: {x: 0.30390567, y: 0.06966191, z: -0.09680318, w: 0.9452078}
 --- !u!1 &999375598411382070 stripped
 GameObject:
@@ -331,8 +335,8 @@ MonoBehaviour:
   originRotation: {x: 0.18964538, y: 0.011715397, z: -0.009750124, w: 0.9817344}
   <Finger>k__BackingField: 2
   tiltAxis: {x: 0, y: 1, z: 0}
-  leftTilt: -5
-  rightTilt: 5
+  leftTilt: -10
+  rightTilt: 10
 --- !u!1 &1685673707722710052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2613131178710829697, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -394,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 0}
   bendAxis: {x: 1, y: 0, z: 0}
-  bendAngle: 65
+  bendAngle: 70
   originRotation: {x: 0.1129837, y: -0.050618958, z: 0.07914509, w: 0.98914534}
 --- !u!1 &2849897656843012586 stripped
 GameObject:
@@ -415,12 +419,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followingJoint: {fileID: 5727528192647294429}
   bendAxis: {x: 1, y: 0, z: 0}
-  bendAngle: 65
+  bendAngle: 40
   originRotation: {x: 0.12707697, y: 0.45972317, z: -0.55127263, w: -0.684547}
   <Finger>k__BackingField: 0
   tiltAxis: {x: 0, y: 1, z: 0}
-  leftTilt: -5
-  rightTilt: 5
+  leftTilt: -25
+  rightTilt: 20
 --- !u!1 &3066068465259182614 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1849816981038263475, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -512,8 +516,8 @@ MonoBehaviour:
   originRotation: {x: 0.08123156, y: 0.08615339, z: -0.055879932, w: 0.9913912}
   <Finger>k__BackingField: 3
   tiltAxis: {x: 0, y: 1, z: 0}
-  leftTilt: -5
-  rightTilt: 5
+  leftTilt: -10
+  rightTilt: 10
 --- !u!1 &7276394867179822433 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6331481824332811206, guid: 88b6a0101883cf74689480effb81144d, type: 3}
@@ -579,5 +583,5 @@ MonoBehaviour:
   originRotation: {x: 0.151882, y: -0.07698268, z: 0.0411778, w: 0.9845354}
   <Finger>k__BackingField: 1
   tiltAxis: {x: 0, y: 1, z: 0}
-  leftTilt: -5
-  rightTilt: 5
+  leftTilt: -10
+  rightTilt: 10

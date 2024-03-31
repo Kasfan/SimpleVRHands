@@ -73,7 +73,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 4294967295
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 5725854288723386192}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
   m_StartingSelectedInteractable: {fileID: 0}
@@ -174,13 +174,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8083339897949466730}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000029802322, y: 0.000000029802322, z: 0.9997376, w: 0.022909388}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.7069581, y: 0.0145000685, z: 0.0145000685, w: -0.7069581}
+  m_LocalPosition: {x: 0, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4301360564261274153}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 177.37502}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: -2.35}
 --- !u!1001 &7512334956590507052
 PrefabInstance:
   m_ObjectHideFlags: 0

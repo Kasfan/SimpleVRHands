@@ -10,29 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29ae2d5188d42d98ff9615dfb0c4b68, type: 3}
-  m_Name: GripButtonPressed
+  m_Name: KettleGrabbed
   m_EditorClassIdentifier: 
   fingerStates:
-    m_keys: 040000000300000002000000
+    m_keys: 0000000001000000020000000300000004000000
     m_values:
     - <Muted>k__BackingField: 0
-      tilt: 1
+      tilt: 0.82
       bends:
-      - 1
-      - 1
-      - 1
+      - 0.171
+      - 0
+      - 0
     - <Muted>k__BackingField: 0
       tilt: 1
       bends:
-      - 1
-      - 1
-      - 1
+      - 0
+      - 0.834
+      - 0
     - <Muted>k__BackingField: 0
-      tilt: 0
+      tilt: 0.08
       bends:
-      - 1
-      - 1
-      - 1
+      - 0.333
+      - 0.66
+      - 0.628
+    - <Muted>k__BackingField: 0
+      tilt: 0.51
+      bends:
+      - 0.593
+      - 0.346
+      - 0.659
+    - <Muted>k__BackingField: 0
+      tilt: 0.28
+      bends:
+      - 0.177
+      - 0.71
+      - 0
   <OverrideVisibility>k__BackingField: 0
   <HandVisible>k__BackingField: 1
   <OverridePosition>k__BackingField: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -56,6 +57,52 @@ namespace SimpleVRHand
         protected void Update()
         {
             HandDriver.UpdateHand(this);
+        }
+
+        protected virtual void OnEnable()
+        {
+            foreach (var interactor in handControllerInteractors)
+            {
+                interactor.selectEntered.AddListener(InteractableSelected);           
+                interactor.selectExited.AddListener(InteractableReleased);
+            }
+        }
+
+        /// <summary>
+        /// Called when an interactor selects and object.
+        /// <remarks>
+        /// We assume that only one interactor can select at a time
+        /// and only one object cant be selected at a time
+        /// </remarks>
+        /// </summary>
+        private void InteractableSelected(SelectEnterEventArgs args)
+        {
+            var interactable = args.interactableObject.transform;
+            var stateModifier = interactable.GetComponent<VrHandStateModifier>();
+            
+            if(stateModifier!=null)
+                HandDriver.SetProvider(stateModifier);
+                
+        }        
+        /// <summary>
+        /// Called when an interactor releases and object
+        /// <remarks>
+        /// We assume that only one interactor can select at a time
+        /// and only one object cant be selected at a time
+        /// </remarks>
+        /// </summary>
+        private void InteractableReleased(SelectExitEventArgs arg0)
+        {
+            HandDriver.SetProvider(null);
+        }
+
+        protected virtual void OnDisable()
+        {
+            foreach (var interactor in handControllerInteractors)
+            {
+                interactor.selectEntered.RemoveListener(InteractableSelected);              
+                interactor.selectExited.RemoveListener(InteractableReleased);     
+            }
         }
 
 

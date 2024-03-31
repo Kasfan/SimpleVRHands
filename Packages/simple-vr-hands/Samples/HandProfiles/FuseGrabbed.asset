@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29ae2d5188d42d98ff9615dfb0c4b68, type: 3}
-  m_Name: GripButtonPressed
+  m_Name: FuseGrabbed
   m_EditorClassIdentifier: 
   fingerStates:
-    m_keys: 040000000300000002000000
+    m_keys: 000000000100000002000000
     m_values:
     - <Muted>k__BackingField: 0
-      tilt: 1
+      tilt: -0.56
       bends:
-      - 1
-      - 1
-      - 1
-    - <Muted>k__BackingField: 0
-      tilt: 1
-      bends:
-      - 1
-      - 1
-      - 1
+      - 0.35
+      - 0.144
+      - 0
     - <Muted>k__BackingField: 0
       tilt: 0
       bends:
-      - 1
-      - 1
-      - 1
+      - 0.341
+      - 0.208
+      - 0.739
+    - <Muted>k__BackingField: 0
+      tilt: -1
+      bends:
+      - 0.135
+      - 0.426
+      - 0.612
   <OverrideVisibility>k__BackingField: 0
   <HandVisible>k__BackingField: 1
   <OverridePosition>k__BackingField: 0
