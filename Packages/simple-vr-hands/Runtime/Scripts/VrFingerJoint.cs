@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using SimpleVRHand.Helpers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SimpleVRHand
 {
@@ -73,6 +72,11 @@ namespace SimpleVRHand
                     break; // if joint found we stop searching
                 }
             }
+        }
+
+        IEnumerator<IVrFingerJoint> IEnumerable<IVrFingerJoint>.GetEnumerator()
+        {
+            return new JointEnumerator(this);
         }
 
         public IEnumerator GetEnumerator()

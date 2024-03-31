@@ -28,9 +28,9 @@ namespace SimpleVRHand
         {
             this.defaultStateProvider = defaultStateProvider;
         }
-        
+
         /// <inheritdoc/>
-        public void UpdateHand(IVrHand hand)
+        public void UpdateHand(IVrHand hand, float speed = float.PositiveInfinity)
         {
             var handProfile = CurrentProvider.CurrentProfile;
             hand.Visible = handProfile.HandVisible;
@@ -42,6 +42,15 @@ namespace SimpleVRHand
                 try
                 {
                     var targetState = GetFingerState(finger.Finger);
+
+                    if (!float.IsPositiveInfinity(speed))
+                    {            
+                        if (speed <= 0f)
+                            throw new ArgumentException($"Transition must > 0, but {speed} provided");
+                        
+                        targetState = GetFingerTransitionState(finger, targetState, speed);
+                    }
+
                     finger.UpdateState(targetState);
                 }
                 catch (KeyNotFoundException e)
@@ -53,6 +62,36 @@ namespace SimpleVRHand
                     Debug.LogError(e);
                 }
             }
+        }
+
+        /// <summary>
+        /// Interpolates between current and target finger states
+        /// </summary>
+        /// <param name="finger">target finger</param>
+        /// <param name="targetState">target finger state</param>
+        /// <param name="t">0f - 1f interpolation factor</param>
+        /// <returns>transition state of the finger</returns>
+        protected VrFingerState GetFingerTransitionState(IVrFinger finger, VrFingerState targetState, float t)
+        {
+            var transitionState = new VrFingerState
+            {
+                Muted = targetState.Muted,
+                Tilt = Mathf.Lerp(finger.Tilt, targetState.Tilt, t),
+                Bends = new float[targetState.Bends.Length]
+            };
+            targetState.Bends.CopyTo(transitionState.Bends,0);
+            
+            int c = 0;
+            foreach (var joint in finger.Root)
+            {
+                if(transitionState.Bends.Length <= c)
+                    break;
+                
+                transitionState.Bends[c] = Mathf.Lerp(joint.Bend, transitionState.Bends[c], t);
+                c++;
+            }
+
+            return transitionState;
         }
         
         /// <summary>

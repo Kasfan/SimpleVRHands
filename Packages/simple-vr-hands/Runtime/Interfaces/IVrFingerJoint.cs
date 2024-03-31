@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace SimpleVRHand
 {
@@ -9,7 +10,7 @@ namespace SimpleVRHand
     /// It's possible to iterate through all the following joints since <see cref="IVrFingerJoint"/> implements <see cref="IEnumerable"/>.
     /// </remarks>
     /// </summary>
-    public interface IVrFingerJoint : IEnumerable
+    public interface IVrFingerJoint : IEnumerable<IVrFingerJoint>
     {
         /// <summary>
         /// Following joint connected to the current one. If NULL - current joint is the last one in the chain.
