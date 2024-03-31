@@ -95,6 +95,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 5f405d0383e49a24587f8b1592542a5d, type: 2}
       - {fileID: 11400000, guid: d963ac120cafa914f8f4377b798d379f, type: 2}
   handControllerInteractors: []
+  stateTransitionSpeed: 15
 --- !u!1001 &5537453127641753947
 PrefabInstance:
   m_ObjectHideFlags: 0

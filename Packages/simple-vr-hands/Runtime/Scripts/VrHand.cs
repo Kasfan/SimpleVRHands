@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -18,6 +17,10 @@ namespace SimpleVRHand
         [Tooltip("Controllers that are used to detect when hand interacts with objects.")]
         [SerializeField] 
         private XRBaseControllerInteractor[] handControllerInteractors;
+        
+        [Tooltip("Speed of transition of the state from min to max value")]
+        [SerializeField] 
+        private float stateTransitionSpeed = 15f;
 
         /// <summary>
         /// Active hand driver
@@ -56,7 +59,7 @@ namespace SimpleVRHand
 
         protected void Update()
         {
-            HandDriver.UpdateHand(this);
+            HandDriver.UpdateHand(this, stateTransitionSpeed * Time.deltaTime);
         }
 
         protected virtual void OnEnable()

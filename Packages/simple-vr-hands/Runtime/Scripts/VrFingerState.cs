@@ -29,7 +29,7 @@ namespace SimpleVRHand
         [Tooltip("Tilt of the finger (lef to right)")] 
         [Range(-1f, 1f)] 
         [SerializeField]
-        public float tilt;
+        private float tilt;
 
         /// <summary>
         /// A set of bends for the finger joints. First element - root joint, last element - tip of the finger
@@ -43,7 +43,7 @@ namespace SimpleVRHand
         [Tooltip("A set of bends for the finger joints. First element - root joint, last element - tip of the finger")]
         [Range(0,1)]
         [SerializeField]
-        public float[] bends;
+        private float[] bends;
 
         /// <summary>
         /// Default state of a finger, useful to reset the finger rotations
