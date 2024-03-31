@@ -1,0 +1,16 @@
+{
+  "name": "com.debugstart.simplevrhands",
+  "version": "0.1.0",
+  "displayName": "Simple VR Hands",
+  "description": "Simple framework to implement VR hands visualization",
+  "unity": "2021.3",
+  "documentationUrl": "https://vrroom.world/",
+  "dependencies": {
+  },
+  "keywords": [ "vr", "xr", "hands" ],
+  "author": {
+    "name": "Denis Slabko",
+    "email": "debug.start@gmail.com",
+    "url": "https://github.com/Kasfan"
+  }
+}
