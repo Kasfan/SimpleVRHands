@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -70,8 +69,16 @@ namespace SimpleVRHand.EditorScripts
                 EditorUtility.SetDirty(sceneHands[selectedHand]);
             }
 
-            // pick a hand
+            EditorGUILayout.BeginHorizontal();
+            // draw hand selector
             selectedHand = EditorGUILayout.Popup("Active hand", selectedHand, handNames);
+            // show button to select current hand gameObject in hierarchy
+            if (selectedHand > 0 && GUILayout.Button("Show in hierarchy"))
+            {
+                EditorGUIUtility.PingObject(sceneHands[selectedHand]);
+            }
+
+            EditorGUILayout.EndHorizontal();
             
             handProfile = EditorGUILayout.ObjectField(
                     "HandProfile", handProfile,
