@@ -115,10 +115,13 @@ PrefabInstance:
       addedObject: {fileID: 5445928862515382617}
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: f33334da4bf68b342a6a1aa10918e929, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 143644807546095975}
+      addedObject: {fileID: 5990901576189590864}
     - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: f33334da4bf68b342a6a1aa10918e929, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5990901576189590864}
+      addedObject: {fileID: 4037490952297138749}
+    - targetCorrespondingSourceObject: {fileID: -927199367670048503, guid: f33334da4bf68b342a6a1aa10918e929, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4836937214170173346}
   m_SourcePrefab: {fileID: 100100000, guid: f33334da4bf68b342a6a1aa10918e929, type: 3}
 --- !u!1 &274004315282643721 stripped
 GameObject:
@@ -152,28 +155,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &143644807546095975
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274004315282643721}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: -8982003189744764258, guid: f33334da4bf68b342a6a1aa10918e929, type: 3}
 --- !u!114 &5990901576189590864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +168,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 4037490952297138749}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -350,6 +332,41 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!64 &4037490952297138749
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274004315282643721}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8982003189744764258, guid: f33334da4bf68b342a6a1aa10918e929, type: 3}
+--- !u!114 &4836937214170173346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274004315282643721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16847a5e4fe146b09548434b2c92d4ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectProfile: {fileID: 11400000, guid: 01b82d734b40416428baa852d95fcfc3, type: 2}
 --- !u!4 &3861322804692412698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f33334da4bf68b342a6a1aa10918e929, type: 3}
